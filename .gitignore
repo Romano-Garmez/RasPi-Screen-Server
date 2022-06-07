@@ -1,6 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/build
 
 # Compiled class file
 *.class
@@ -15,6 +16,7 @@
 .mtj.tmp/
 
 # Package Files #
+*.jar
 *.war
 *.nar
 *.ear
