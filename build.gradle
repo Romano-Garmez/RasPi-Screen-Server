@@ -22,3 +22,16 @@ jar {
         attributes 'Main-Class': 'com.romangarms.Server'
     }
 }
+
+java {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
+
+repositories {
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+dependencies { implementation name: 'http' }
