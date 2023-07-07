@@ -18,6 +18,6 @@ public class ScreenOffHandler implements HttpHandler {
         System.out.println("Turning Screen Off");
 
         //run this command to disable the screen
-        Runtime.getRuntime().exec("vcgencmd display_power 0");
+        Runtime.getRuntime().exec("export DISPLAY=:0 && xset dpms force suspend");
     }
 }

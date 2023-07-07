@@ -20,6 +20,6 @@ public class ScreenOnHandler implements HttpHandler {
         System.out.println("Turning Screen On");
 
         //run this command to reenable the screen
-        Runtime.getRuntime().exec("vcgencmd display_power 1");
+        Runtime.getRuntime().exec("export DISPLAY=:0 && xset dpms force on");
     }
 }
