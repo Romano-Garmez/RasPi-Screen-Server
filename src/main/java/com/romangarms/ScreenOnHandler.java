@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class ScreenOnHandler implements HttpHandler {
-
-
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         String response = "<h1>Screen is on</h1>";
@@ -20,6 +18,7 @@ public class ScreenOnHandler implements HttpHandler {
         System.out.println("Turning Screen On");
 
         //run this command to reenable the screen
-        Runtime.getRuntime().exec("export DISPLAY=:0 && xset dpms force on");
+        Runtime.getRuntime().exec("export DISPLAY=:0");
+        Runtime.getRuntime().exec("xset dpms force on");
     }
 }
