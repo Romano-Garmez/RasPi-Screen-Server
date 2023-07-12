@@ -18,6 +18,8 @@ public class ScreenOnHandler implements HttpHandler {
         System.out.println("Turning Screen On");
 
         //run this command to reenable the screen
-        Runtime.getRuntime().exec("DISPLAY=:0 xset dpms force on");
+        Runtime.getRuntime().exec(new String[] { "bash", "-c", "DISPLAY=:0 xset dpms force on"});
+
+        //Runtime.getRuntime().exec("DISPLAY=:0 xset dpms force on");
     }
 }
