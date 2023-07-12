@@ -19,7 +19,7 @@ public class ScreenOffHandler implements HttpHandler {
 
         //run this command to disable the screen
 
-        Runtime.getRuntime().exec("sh home/romangarms/screenOff.sh");
+        Runtime.getRuntime().exec("sh /home/romangarms/screenOff.sh");
         //Runtime.getRuntime().exec("DISPLAY=:0 xset dpms force suspend");
 
     }
