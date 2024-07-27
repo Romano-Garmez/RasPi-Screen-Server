@@ -20,6 +20,6 @@ public class ScreenOnHandler implements HttpHandler {
         System.out.println("Turning Screen On");
 
         //run this command to reenable the screen
-        Runtime.getRuntime().exec("DISPLAY=:0.0 xrandr --output HDMI-1 --auto");
+        Runtime.getRuntime().exec("xrandr --output HDMI-1 --auto");
     }
 }
