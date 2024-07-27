@@ -18,10 +18,10 @@ public class ScreenOffHandler implements HttpHandler {
         System.out.println("Turning Screen Off");
 
         //run this command to disable the screen
-        Runtime.getRuntime().exec("/home/romangarms/TurnOffDisplay.sh");
+        Runtime.getRuntime().exec("xrandr --display :0 --output HDMI-1 --off");
     }
 
     public static void main(String[] args) throws IOException {
-        Runtime.getRuntime().exec("/home/romangarms/TurnOffDisplay.sh");
+        Runtime.getRuntime().exec("xrandr --display :0 --output HDMI-1 --off");
     }
 }
