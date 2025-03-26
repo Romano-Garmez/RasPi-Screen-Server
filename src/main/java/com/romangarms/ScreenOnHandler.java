@@ -5,10 +5,9 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 public class ScreenOnHandler implements HttpHandler {
-
-
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         String response = "<h1>Screen is on</h1>";
@@ -19,11 +18,22 @@ public class ScreenOnHandler implements HttpHandler {
 
         System.out.println("Turning Screen On");
 
-        //run this command to reenable the screen
-        Runtime.getRuntime().exec("xrandr --display :0 --output HDMI-1 --auto");
+        // Set the environment variable WAYLAND_DISPLAY for the process
+        ProcessBuilder pb = new ProcessBuilder("wlr-randr", "--output", "HDMI-A-1", "--on");
+
+        // Set the environment variable
+        Map<String, String> environment = pb.environment();
+        environment.put("WAYLAND_DISPLAY", "wayland-1");
+
+        // Run the command to turn off the screen
+        pb.start();
     }
 
     public static void main(String[] args) throws IOException {
-        Runtime.getRuntime().exec("xrandr --display :0 --output HDMI-1 --auto");
+        // Run this command to disable the screen with the proper environment variable
+        ProcessBuilder pb = new ProcessBuilder("wlr-randr", "--output", "HDMI-A-1", "--on");
+        Map<String, String> environment = pb.environment();
+        environment.put("WAYLAND_DISPLAY", "wayland-1");
+        pb.start();
     }
 }

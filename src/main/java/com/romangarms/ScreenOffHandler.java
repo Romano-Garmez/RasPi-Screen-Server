@@ -5,6 +5,7 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 public class ScreenOffHandler implements HttpHandler {
     @Override
@@ -17,11 +18,22 @@ public class ScreenOffHandler implements HttpHandler {
 
         System.out.println("Turning Screen Off");
 
-        //run this command to disable the screen
-        Runtime.getRuntime().exec("xrandr --display :0 --output HDMI-1 --off");
+        // Set the environment variable WAYLAND_DISPLAY for the process
+        ProcessBuilder pb = new ProcessBuilder("wlr-randr", "--output", "HDMI-A-1", "--off");
+
+        // Set the environment variable
+        Map<String, String> environment = pb.environment();
+        environment.put("WAYLAND_DISPLAY", "wayland-1");
+
+        // Run the command to turn off the screen
+        pb.start();
     }
 
     public static void main(String[] args) throws IOException {
-        Runtime.getRuntime().exec("xrandr --display :0 --output HDMI-1 --off");
+        // Run this command to disable the screen with the proper environment variable
+        ProcessBuilder pb = new ProcessBuilder("wlr-randr", "--output", "HDMI-A-1", "--off");
+        Map<String, String> environment = pb.environment();
+        environment.put("WAYLAND_DISPLAY", "wayland-1");
+        pb.start();
     }
 }
